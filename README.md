@@ -1,7 +1,5 @@
 ### **Day 1: Arrays, Strings, and Two Pointers**
 
-#### **Patterns to Focus On:**
-
 1. **Sliding Window:**
    - A sliding window is a technique where you maintain a window (a subset of elements) within an array or string, and adjust the window size dynamically.
    - It helps in optimizing problems where you need to check for subarrays or substrings meeting certain criteria.
@@ -14,9 +12,6 @@
    - A prefix sum array helps you calculate the sum of elements from index 0 to any index in constant time, which is useful in problems where you need subarrays’ sums.
 
 ---
-
-### **Practice Problems:**
-
 1. **Longest Substring Without Repeating Characters (LeetCode #3) → Sliding Window**
    
    - **Problem**: Find the length of the longest substring without repeating characters.
@@ -127,5 +122,3 @@
 
 2. **Optimize Brute Force Solutions by Reducing Nested Loops**:
    - Instead of using multiple nested loops, try to reduce complexity by leveraging sliding windows, two pointers, or prefix sums. These techniques allow you to reduce the time complexity from `O(n^2)` to `O(n)` or `O(n log n)` in many cases.
-
-By mastering these patterns and solving these problems, you will gain a solid understanding of efficient array manipulation techniques in C#. Let me know if you need further explanations or assistance with any of the problems!
