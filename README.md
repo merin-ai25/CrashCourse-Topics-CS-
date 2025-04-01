@@ -1,5 +1,5 @@
-# CrashCourse-Topics-CS
-That’s a solid start! Here's a structured breakdown to help you efficiently master these patterns:
+# Day 1: Arrays, Strings, and Two Pointers
+Objective: Master array manipulation and two-pointer techniques.
 
 ---
 
