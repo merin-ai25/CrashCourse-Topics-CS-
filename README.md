@@ -1,5 +1,3 @@
-To help you master array manipulation and two-pointer techniques, here's a breakdown of each concept along with corresponding practice problems and strategies in C#:
-
 ### **Day 1: Arrays, Strings, and Two Pointers**
 
 #### **Patterns to Focus On:**
