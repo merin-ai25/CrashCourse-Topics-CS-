@@ -1,121 +1,133 @@
-# Day 1: Arrays, Strings, and Two Pointers
-Objective: Master array manipulation and two-pointer techniques.
+To help you master array manipulation and two-pointer techniques, here's a breakdown of each concept along with corresponding practice problems and strategies in C#:
+
+### **Day 1: Arrays, Strings, and Two Pointers**
+
+#### **Patterns to Focus On:**
+
+1. **Sliding Window:**
+   - A sliding window is a technique where you maintain a window (a subset of elements) within an array or string, and adjust the window size dynamically.
+   - It helps in optimizing problems where you need to check for subarrays or substrings meeting certain criteria.
+
+2. **Two Pointers (Sorted Array Problems):**
+   - The two-pointer technique is used to solve problems involving sorted arrays or lists, where one pointer moves from the start and the other from the end.
+   - This technique helps solve problems like searching pairs or finding the maximum/minimum in certain conditions.
+
+3. **Prefix Sum:**
+   - A prefix sum array helps you calculate the sum of elements from index 0 to any index in constant time, which is useful in problems where you need subarrays’ sums.
 
 ---
 
-### **1️⃣ Sliding Window: Longest Substring Without Repeating Characters (LeetCode #3)**  
-**Concept**: Maintain a window of non-repeating characters and slide it dynamically.  
-🔹 **Key Idea**: Use a HashMap to store characters and their last seen positions.  
+### **Practice Problems:**
 
-💡 **Approach**:
-- Use a left and right pointer.
-- Expand `right` while adding characters to a HashMap.
-- If a character repeats, shrink from `left` until it's unique again.
-- Keep track of the max length.
+1. **Longest Substring Without Repeating Characters (LeetCode #3) → Sliding Window**
+   
+   - **Problem**: Find the length of the longest substring without repeating characters.
+   - **Approach**: Use a sliding window to keep track of the substring that contains no repeating characters. Use a hash map to store the last occurrence of each character.
 
-**Code (Python)**
-```python
-def lengthOfLongestSubstring(s):
-    char_map = {}
-    left = max_length = 0
+   **C# Example:**
+   ```csharp
+   public int LengthOfLongestSubstring(string s) {
+       var map = new Dictionary<char, int>();
+       int start = 0, maxLength = 0;
+       for (int end = 0; end < s.Length; end++) {
+           if (map.ContainsKey(s[end])) {
+               start = Math.Max(start, map[s[end]] + 1);
+           }
+           map[s[end]] = end;
+           maxLength = Math.Max(maxLength, end - start + 1);
+       }
+       return maxLength;
+   }
+   ```
 
-    for right in range(len(s)):
-        if s[right] in char_map:
-            left = max(left, char_map[s[right]] + 1)
-        char_map[s[right]] = right
-        max_length = max(max_length, right - left + 1)
-    
-    return max_length
-```
+2. **3Sum (LeetCode #15) → Two Pointers**
+   
+   - **Problem**: Find all unique triplets in an array that sum to zero.
+   - **Approach**: Sort the array and then use two pointers to find pairs that sum up to the negative of the current element.
+
+   **C# Example:**
+   ```csharp
+   public IList<IList<int>> ThreeSum(int[] nums) {
+       var result = new List<IList<int>>();
+       Array.Sort(nums);
+       for (int i = 0; i < nums.Length - 2; i++) {
+           if (i > 0 && nums[i] == nums[i - 1]) continue; // Skip duplicates
+           int left = i + 1, right = nums.Length - 1;
+           while (left < right) {
+               int sum = nums[i] + nums[left] + nums[right];
+               if (sum == 0) {
+                   result.Add(new List<int> { nums[i], nums[left], nums[right] });
+                   while (left < right && nums[left] == nums[left + 1]) left++;
+                   while (left < right && nums[right] == nums[right - 1]) right--;
+                   left++;
+                   right--;
+               } else if (sum < 0) {
+                   left++;
+               } else {
+                   right--;
+               }
+           }
+       }
+       return result;
+   }
+   ```
+
+3. **Subarray Sum Equals K (LeetCode #560) → Prefix Sum**
+   
+   - **Problem**: Find the total number of continuous subarrays whose sum equals to a given value `k`.
+   - **Approach**: Use a prefix sum and a hash map to store the frequency of each prefix sum. This allows you to count the number of subarrays that sum to `k` efficiently.
+
+   **C# Example:**
+   ```csharp
+   public int SubarraySum(int[] nums, int k) {
+       var map = new Dictionary<int, int> { { 0, 1 } }; // Prefix sum to count
+       int sum = 0, count = 0;
+       foreach (var num in nums) {
+           sum += num;
+           if (map.ContainsKey(sum - k)) {
+               count += map[sum - k];
+           }
+           if (!map.ContainsKey(sum)) {
+               map[sum] = 0;
+           }
+           map[sum]++;
+       }
+       return count;
+   }
+   ```
+
+4. **Container With Most Water (LeetCode #11) → Two Pointers**
+   
+   - **Problem**: Find the container with the most water by determining the area formed between two vertical lines.
+   - **Approach**: Use two pointers: one at the beginning and one at the end of the array, and calculate the area. Move the pointer pointing to the shorter line inward, hoping to find a taller line that may form a larger area.
+
+   **C# Example:**
+   ```csharp
+   public int MaxArea(int[] height) {
+       int left = 0, right = height.Length - 1;
+       int maxArea = 0;
+       while (left < right) {
+           int width = right - left;
+           int currentArea = Math.Min(height[left], height[right]) * width;
+           maxArea = Math.Max(maxArea, currentArea);
+           if (height[left] < height[right]) {
+               left++;
+           } else {
+               right--;
+           }
+       }
+       return maxArea;
+   }
+   ```
 
 ---
 
-### **2️⃣ Two Pointers: 3Sum (LeetCode #15)**  
-**Concept**: Sort the array and use two pointers to find triplets summing to zero.  
-🔹 **Key Idea**: Convert `O(n³)` brute-force to `O(n²)` by using sorting and two-pointer strategy.  
+### **Tricks to Learn:**
 
-💡 **Approach**:
-- Sort the array.
-- Fix one element, then use two pointers to find the other two numbers.
-- Move pointers based on the sum.
+1. **Use Hash Maps for Quick Lookups**:
+   - Hash maps provide constant-time complexity for lookups, making them ideal for problems that require frequent access to data, like checking if an element exists in a window or tracking prefix sums.
 
-**Code (Python)**
-```python
-def threeSum(nums):
-    nums.sort()
-    res = []
+2. **Optimize Brute Force Solutions by Reducing Nested Loops**:
+   - Instead of using multiple nested loops, try to reduce complexity by leveraging sliding windows, two pointers, or prefix sums. These techniques allow you to reduce the time complexity from `O(n^2)` to `O(n)` or `O(n log n)` in many cases.
 
-    for i in range(len(nums) - 2):
-        if i > 0 and nums[i] == nums[i - 1]:  # Skip duplicates
-            continue
-        left, right = i + 1, len(nums) - 1
-        while left < right:
-            total = nums[i] + nums[left] + nums[right]
-            if total == 0:
-                res.append([nums[i], nums[left], nums[right]])
-                left += 1
-                right -= 1
-                while left < right and nums[left] == nums[left - 1]:  # Skip duplicates
-                    left += 1
-                while left < right and nums[right] == nums[right + 1]:  # Skip duplicates
-                    right -= 1
-            elif total < 0:
-                left += 1
-            else:
-                right -= 1
-                
-    return res
-```
-
----
-
-### **3️⃣ Prefix Sum: Subarray Sum Equals K (LeetCode #560)**  
-**Concept**: Use a HashMap to store prefix sums and find subarrays that sum to `k`.  
-🔹 **Key Idea**: Instead of brute-force `O(n²)`, use prefix sum to get `O(n)` efficiency.  
-
-💡 **Approach**:
-- Maintain a running sum.
-- Check how many times `running_sum - k` has appeared before in a HashMap.
-- Store occurrences of running sums.
-
-**Code (Python)**
-```python
-def subarraySum(nums, k):
-    prefix_sum = {0: 1}  # Store sum frequencies
-    running_sum = count = 0
-
-    for num in nums:
-        running_sum += num
-        count += prefix_sum.get(running_sum - k, 0)
-        prefix_sum[running_sum] = prefix_sum.get(running_sum, 0) + 1
-    
-    return count
-```
-
----
-
-### **4️⃣ Two Pointers: Container With Most Water (LeetCode #11)**  
-**Concept**: Use two pointers to maximize area.  
-🔹 **Key Idea**: Instead of brute-force `O(n²)`, shrink the side with the smaller height in `O(n)`.  
-
-💡 **Approach**:
-- Use two pointers at both ends.
-- Calculate the area at each step.
-- Move the pointer with the smaller height.
-
-**Code (Python)**
-```python
-def maxArea(height):
-    left, right = 0, len(height) - 1
-    max_water = 0
-
-    while left < right:
-        max_water = max(max_water, (right - left) * min(height[left], height[right]))
-        if height[left] < height[right]:
-            left += 1
-        else:
-            right -= 1
-            
-    return max_water
-```
-
+By mastering these patterns and solving these problems, you will gain a solid understanding of efficient array manipulation techniques in C#. Let me know if you need further explanations or assistance with any of the problems!
