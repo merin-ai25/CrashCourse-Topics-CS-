@@ -119,18 +119,3 @@ def maxArea(height):
     return max_water
 ```
 
----
-
-### **💡 Tricks Recap**
-✅ **Sliding Window** → Use HashMaps to track seen characters.  
-✅ **Two Pointers** → Efficient in sorted arrays for `O(n²)` optimizations.  
-✅ **Prefix Sum** → HashMap helps store and retrieve sums efficiently.  
-
----
-
-🔥 **Next Steps**:  
-- Implement these in C# or any other language you're practicing.  
-- Try similar problems like "Minimum Window Substring" (Sliding Window) or "Two Sum II" (Two Pointers).  
-- Time yourself solving them to build speed.  
-
-Let me know if you want variations or explanations for edge cases! 🚀
