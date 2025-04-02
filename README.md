@@ -130,21 +130,50 @@ class Program
 
    **C# Example:**
    ```csharp
-   public int SubarraySum(int[] nums, int k) {
-       var map = new Dictionary<int, int> { { 0, 1 } }; // Prefix sum to count
-       int sum = 0, count = 0;
-       foreach (var num in nums) {
-           sum += num;
-           if (map.ContainsKey(sum - k)) {
-               count += map[sum - k];
-           }
-           if (!map.ContainsKey(sum)) {
-               map[sum] = 0;
-           }
-           map[sum]++;
-       }
-       return count;
-   }
+   using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Enter numbers separated by spaces (e.g., '1 1 1'):");
+        int[] nums = Array.ConvertAll(Console.ReadLine().Split(), int.Parse);
+
+        Console.WriteLine("Enter the target sum (k):");
+        int k = int.Parse(Console.ReadLine());
+
+        int result = SubarraySum(nums, k);
+
+        Console.WriteLine($"\nNumber of subarrays that sum to {k}: {result}");//Number of that integer whose occurence calculates to a result
+    }
+
+    static int SubarraySum(int[] nums, int k)
+    {
+        var prefixSumCounts = new Dictionary<int, int> { { 0, 1 } }; // Tracks how many times each prefix sum occurs
+        int currentSum = 0, count = 0;
+
+        foreach (int num in nums)
+        {
+            currentSum += num; // Update the running sum
+
+            // If (currentSum - k) exists in the map, it means there's a subarray summing to k
+            if (prefixSumCounts.TryGetValue(currentSum - k, out int value))
+            {
+                count += value;
+            }
+
+            // Update the dictionary with the current prefix sum
+            if (!prefixSumCounts.ContainsKey(currentSum))
+            {
+                prefixSumCounts[currentSum] = 0;
+            }
+            prefixSumCounts[currentSum]++;
+        }
+
+        return count;
+    }
+}
    ```
 
 ---
