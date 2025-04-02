@@ -11,7 +11,6 @@
 3. **Prefix Sum:**
    - A prefix sum array helps you calculate the sum of elements from index 0 to any index in constant time, which is useful in problems where you need subarrays’ sums.
 
----
 1. **Longest Substring Without Repeating Characters (LeetCode #3) → Sliding Window**
    
    - **Problem**: Find the length of the longest substring without repeating characters.
@@ -46,6 +45,7 @@
     }
    }
    ```
+---
 
 2. **3Sum (LeetCode #15) → Two Pointers**
    
