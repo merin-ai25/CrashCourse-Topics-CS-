@@ -1,25 +1,13 @@
-# **Day 2: Binary Search and Sorting**
+### **Day 2: Binary Search and Sorting**
 
-## **Patterns to Focus On:**
+**Patterns to Focus On:**
 
-### **1.Binary Search (Iterative/Recursive)**
+**1.Binary Search (Iterative/Recursive)**
    - **Binary search** works efficiently on **sorted** arrays by repeatedly halving the search space.
    - **Iterative**: Uses `while (low <= high)`, ensuring all cases are checked.
    - **Recursive**: Reduces the problem size through function calls.
 
-### **2.Modified Binary Search (Rotated Arrays, Peaks)**
-   - Used when the array is **not fully sorted**, but has a special property (e.g., rotated, mountain array).
-   - Adjusts **binary search logic** to handle these modifications.
-
-### **3.Sorting + Greedy**
-   - **Sorting** simplifies decision-making in **greedy algorithms**.
-   - Helps in problems like **merging intervals**, **minimizing/maximizing results**, or **partitioning elements** efficiently.
-
----
-
-## **Practice Problems:**
-
-### **1.Search in Rotated Sorted Array (LeetCode #33) → Modified Binary Search**
+**1.Search in Rotated Sorted Array (LeetCode #33) → Modified Binary Search**
    - **Problem**: Given a rotated sorted array, find a target element in **O(log n)** time.
    - **Approach**:
      - Identify which half is **sorted**.
@@ -51,7 +39,11 @@ public int Search(int[] nums, int target) {
 
 ---
 
-### **2.Find First and Last Position of Element in Sorted Array (LeetCode #34) → Binary Search**
+**2.Modified Binary Search (Rotated Arrays, Peaks)**
+   - Used when the array is **not fully sorted**, but has a special property (e.g., rotated, mountain array).
+   - Adjusts **binary search logic** to handle these modifications.
+
+**2.Find First and Last Position of Element in Sorted Array (LeetCode #34) → Binary Search**
    - **Problem**: Find the **first** and **last** occurrence of a target in a **sorted array**.
    - **Approach**:
      - Use **binary search twice**:
@@ -80,7 +72,11 @@ private int FindBound(int[] nums, int target, bool isFirst) {
 
 ---
 
-### **3.Merge Intervals (LeetCode #56) → Sorting + Greedy**
+**3.Sorting + Greedy**
+   - **Sorting** simplifies decision-making in **greedy algorithms**.
+   - Helps in problems like **merging intervals**, **minimizing/maximizing results**, or **partitioning elements** efficiently.
+     
+**3.Merge Intervals (LeetCode #56) → Sorting + Greedy**
    - **Problem**: Given a list of intervals, merge all overlapping ones.
    - **Approach**:
      - **Sort** intervals based on **start time**.
@@ -108,13 +104,13 @@ public int[][] Merge(int[][] intervals) {
 
 ---
 
-### **4.Kth Largest Element in an Array (LeetCode #215) → Quickselect or Heap**
+**4.Kth Largest Element in an Array (LeetCode #215) → Quickselect or Heap**
    - **Problem**: Find the **kth largest** element in an **unsorted** array.
    - **Approach**:
      - **Quickselect Algorithm**: Similar to quicksort, but only partitions the array where needed.
      - **Heap Approach**: Uses a **Min-Heap** to maintain the `k` largest elements.
 
-#### **Quickselect Approach (O(n) on average):**
+**Quickselect Approach (O(n) on average):**
 ```csharp
 public int FindKthLargest(int[] nums, int k) {
     return QuickSelect(nums, 0, nums.Length - 1, nums.Length - k);
@@ -143,8 +139,7 @@ private int Partition(int[] nums, int left, int right) {
 ```
 
 ---
-
-## **Tricks to Learn:**
+**Tricks to Learn:**
 **Edge Cases Matter!**  
    - **Empty arrays**  
    - **Arrays with one element**  
