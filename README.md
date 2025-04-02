@@ -5,9 +5,6 @@
    - It helps in optimizing problems where you need to check for subarrays or substrings meeting certain criteria.
 
 . **Longest Substring Without Repeating Characters (LeetCode #3) → Sliding Window**
-   
-   - **Problem**: Find the length of the longest substring without repeating characters.
-   - **Approach**: Use a sliding window to keep track of the substring that contains no repeating characters. Use a hash map to store the last occurrence of each character.
 
    **C# Example:**
    ```csharp
