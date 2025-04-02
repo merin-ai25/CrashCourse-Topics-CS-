@@ -123,8 +123,8 @@ class Program
 ---
 3. **Prefix Sum:**
    - A prefix sum array helps you calculate the sum of elements from index 0 to any index in constant time, which is useful in problems where you need subarrays’ sums.
+
 . **Subarray Sum Equals K (LeetCode #560) → Prefix Sum**
-   
    - **Problem**: Find the total number of continuous subarrays whose sum equals to a given value `k`.
    - **Approach**: Use a prefix sum and a hash map to store the frequency of each prefix sum. This allows you to count the number of subarrays that sum to `k` efficiently.
 
