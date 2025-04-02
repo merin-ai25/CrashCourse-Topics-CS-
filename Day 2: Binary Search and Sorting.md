@@ -108,7 +108,7 @@ public int[][] Merge(int[][] intervals) {
 
 ---
 
-### **4️.Kth Largest Element in an Array (LeetCode #215) → Quickselect or Heap**
+### **4.Kth Largest Element in an Array (LeetCode #215) → Quickselect or Heap**
    - **Problem**: Find the **kth largest** element in an **unsorted** array.
    - **Approach**:
      - **Quickselect Algorithm**: Similar to quicksort, but only partitions the array where needed.
@@ -144,18 +144,18 @@ private int Partition(int[] nums, int left, int right) {
 
 ---
 
-## **🛠 Tricks to Learn:**
-1️⃣ **Edge Cases Matter!**  
+## **Tricks to Learn:**
+**Edge Cases Matter!**  
    - **Empty arrays**  
    - **Arrays with one element**  
    - **Duplicates**  
    - **All elements are the same**  
 
-2️⃣ **Binary Search Rule: `while (low <= high)`**  
+**Binary Search Rule: `while (low <= high)`**  
    - **Avoid infinite loops** by always checking `low <= high`.
    - **For first occurrence**, move `right = mid - 1`.
    - **For last occurrence**, move `left = mid + 1`.
 
-3️⃣ **Sorting Before Greedy**  
+**Sorting Before Greedy**  
    - Sorting simplifies greedy approaches like **merging intervals**.
    - Helps with problems involving **overlapping** or **partitioning**.
