@@ -24,27 +24,25 @@
 
    class Program
    {
-    static int LengthOfLongestSubstring(string s)
-    {
-        var map = new Dictionary<char, int>();
-        int start = 0, maxLength = 0;
-        for (int end = 0; end < s.Length; end++)
-        {
-            if (map.ContainsKey(s[end]))
-            {
-                start = Math.Max(start, map[s[end]] + 1);
-            }
-            map[s[end]] = end;
-            maxLength = Math.Max(maxLength, end - start + 1);
-        }
-        return maxLength;
-    }
     static void Main()
     {
-        Console.WriteLine("Enter a string to find the length of the longest substring without repeating characters:");
-        string input = Console.ReadLine();
-        int result = LengthOfLongestSubstring(input);
-        Console.WriteLine($"Length of the longest substring without repeating characters: {result}");
+        Console.Write("Enter a string: ");
+        string s = Console.ReadLine();
+        
+        Dictionary<char, int> lastSeen = new Dictionary<char, int>();
+        int start = 0, maxLen = 0;
+        
+        for (int end = 0; end < s.Length; end++)
+        {
+            if (lastSeen.ContainsKey(s[end]))
+            {
+                start = Math.Max(start, lastSeen[s[end]] + 1);
+            }
+            lastSeen[s[end]] = end;
+            maxLen = Math.Max(maxLen, end - start + 1);
+        }
+        
+        Console.WriteLine("Longest substring length: " + maxLen);
     }
    }
    ```
