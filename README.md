@@ -19,11 +19,11 @@
 
    **C# Example:**
    ```csharp
-  using System;
-using System.Collections.Generic;
+   using System;
+   using System.Collections.Generic;
 
-class Program
-{
+   class Program
+   {
     static int LengthOfLongestSubstring(string s)
     {
         var map = new Dictionary<char, int>();
@@ -39,7 +39,6 @@ class Program
         }
         return maxLength;
     }
-
     static void Main()
     {
         Console.WriteLine("Enter a string to find the length of the longest substring without repeating characters:");
@@ -47,7 +46,7 @@ class Program
         int result = LengthOfLongestSubstring(input);
         Console.WriteLine($"Length of the longest substring without repeating characters: {result}");
     }
-}
+   }
    ```
 
 2. **3Sum (LeetCode #15) → Two Pointers**
