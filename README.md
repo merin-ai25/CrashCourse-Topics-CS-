@@ -4,14 +4,7 @@
    - A sliding window is a technique where you maintain a window (a subset of elements) within an array or string, and adjust the window size dynamically.
    - It helps in optimizing problems where you need to check for subarrays or substrings meeting certain criteria.
 
-2. **Two Pointers (Sorted Array Problems):**
-   - The two-pointer technique is used to solve problems involving sorted arrays or lists, where one pointer moves from the start and the other from the end.
-   - This technique helps solve problems like searching pairs or finding the maximum/minimum in certain conditions.
-
-3. **Prefix Sum:**
-   - A prefix sum array helps you calculate the sum of elements from index 0 to any index in constant time, which is useful in problems where you need subarrays’ sums.
-
-1. **Longest Substring Without Repeating Characters (LeetCode #3) → Sliding Window**
+. **Longest Substring Without Repeating Characters (LeetCode #3) → Sliding Window**
    
    - **Problem**: Find the length of the longest substring without repeating characters.
    - **Approach**: Use a sliding window to keep track of the substring that contains no repeating characters. Use a hash map to store the last occurrence of each character.
@@ -46,8 +39,11 @@
    }
    ```
 ---
+2. **Two Pointers (Sorted Array Problems):**
+   - The two-pointer technique is used to solve problems involving sorted arrays or lists, where one pointer moves from the start and the other from the end.
+   - This technique helps solve problems like searching pairs or finding the maximum/minimum in certain conditions.
 
-2. **3Sum (LeetCode #15) → Two Pointers**
+. **3Sum (LeetCode #15) → Two Pointers**
    
    - **Problem**: Find all unique triplets in an array that sum to zero.
    - **Approach**: Sort the array and then use two pointers to find pairs that sum up to the negative of the current element.
@@ -78,32 +74,7 @@
        return result;
    }
    ```
-
-3. **Subarray Sum Equals K (LeetCode #560) → Prefix Sum**
-   
-   - **Problem**: Find the total number of continuous subarrays whose sum equals to a given value `k`.
-   - **Approach**: Use a prefix sum and a hash map to store the frequency of each prefix sum. This allows you to count the number of subarrays that sum to `k` efficiently.
-
-   **C# Example:**
-   ```csharp
-   public int SubarraySum(int[] nums, int k) {
-       var map = new Dictionary<int, int> { { 0, 1 } }; // Prefix sum to count
-       int sum = 0, count = 0;
-       foreach (var num in nums) {
-           sum += num;
-           if (map.ContainsKey(sum - k)) {
-               count += map[sum - k];
-           }
-           if (!map.ContainsKey(sum)) {
-               map[sum] = 0;
-           }
-           map[sum]++;
-       }
-       return count;
-   }
-   ```
-
-4. **Container With Most Water (LeetCode #11) → Two Pointers**
+. **Container With Most Water (LeetCode #11) → Two Pointers**
    
    - **Problem**: Find the container with the most water by determining the area formed between two vertical lines.
    - **Approach**: Use two pointers: one at the beginning and one at the end of the array, and calculate the area. Move the pointer pointing to the shorter line inward, hoping to find a taller line that may form a larger area.
@@ -124,6 +95,32 @@
            }
        }
        return maxArea;
+   }
+   ```
+---
+3. **Prefix Sum:**
+   - A prefix sum array helps you calculate the sum of elements from index 0 to any index in constant time, which is useful in problems where you need subarrays’ sums.
+. **Subarray Sum Equals K (LeetCode #560) → Prefix Sum**
+   
+   - **Problem**: Find the total number of continuous subarrays whose sum equals to a given value `k`.
+   - **Approach**: Use a prefix sum and a hash map to store the frequency of each prefix sum. This allows you to count the number of subarrays that sum to `k` efficiently.
+
+   **C# Example:**
+   ```csharp
+   public int SubarraySum(int[] nums, int k) {
+       var map = new Dictionary<int, int> { { 0, 1 } }; // Prefix sum to count
+       int sum = 0, count = 0;
+       foreach (var num in nums) {
+           sum += num;
+           if (map.ContainsKey(sum - k)) {
+               count += map[sum - k];
+           }
+           if (!map.ContainsKey(sum)) {
+               map[sum] = 0;
+           }
+           map[sum]++;
+       }
+       return count;
    }
    ```
 
