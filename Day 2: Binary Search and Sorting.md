@@ -1,7 +1,5 @@
 ### **Day 2: Binary Search and Sorting**
 
-**Patterns to Focus On:**
-
 **1.Binary Search (Iterative/Recursive)**
    - **Binary search** works efficiently on **sorted** arrays by repeatedly halving the search space.
    - **Iterative**: Uses `while (low <= high)`, ensuring all cases are checked.
