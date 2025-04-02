@@ -5,7 +5,7 @@
    - **Iterative**: Uses `while (low <= high)`, ensuring all cases are checked.
    - **Recursive**: Reduces the problem size through function calls.
 
-**1.Search in Rotated Sorted Array (LeetCode #33) → Modified Binary Search**
+**.Search in Rotated Sorted Array (LeetCode #33) → Modified Binary Search**
    - **Problem**: Given a rotated sorted array, find a target element in **O(log n)** time.
    - **Approach**:
      - Identify which half is **sorted**.
@@ -41,7 +41,7 @@ public int Search(int[] nums, int target) {
    - Used when the array is **not fully sorted**, but has a special property (e.g., rotated, mountain array).
    - Adjusts **binary search logic** to handle these modifications.
 
-**2.Find First and Last Position of Element in Sorted Array (LeetCode #34) → Binary Search**
+**.Find First and Last Position of Element in Sorted Array (LeetCode #34) → Binary Search**
    - **Problem**: Find the **first** and **last** occurrence of a target in a **sorted array**.
    - **Approach**:
      - Use **binary search twice**:
@@ -74,13 +74,12 @@ private int FindBound(int[] nums, int target, bool isFirst) {
    - **Sorting** simplifies decision-making in **greedy algorithms**.
    - Helps in problems like **merging intervals**, **minimizing/maximizing results**, or **partitioning elements** efficiently.
      
-**3.Merge Intervals (LeetCode #56) → Sorting + Greedy**
+**.Merge Intervals (LeetCode #56) → Sorting + Greedy**
    - **Problem**: Given a list of intervals, merge all overlapping ones.
    - **Approach**:
      - **Sort** intervals based on **start time**.
      - **Iterate and merge** overlapping intervals.
 
-**C# Implementation:**
 ```csharp
 public int[][] Merge(int[][] intervals) {
     if (intervals.Length == 0) return intervals;
